@@ -338,10 +338,18 @@ class Application(object):
         self.serverlog.set_log_level(6)
         self.rpc_service = JSONRPCServiceCustom()
         self.method_authentication = dict()
-        self.rpc_service.add(impl_MotifScan.run_MotifScan,
-                             name='MotifScan.run_MotifScan',
+        self.rpc_service.add(impl_MotifScan.ScanGenomeForMotifs,
+                             name='MotifScan.ScanGenomeForMotifs',
                              types=[dict])
-        self.method_authentication['MotifScan.run_MotifScan'] = 'required'  # noqa
+        self.method_authentication['MotifScan.ScanGenomeForMotifs'] = 'required'  # noqa
+        self.rpc_service.add(impl_MotifScan.ScanSequenceSetForMotifs,
+                             name='MotifScan.ScanSequenceSetForMotifs',
+                             types=[dict])
+        self.method_authentication['MotifScan.ScanSequenceSetForMotifs'] = 'required'  # noqa
+        self.rpc_service.add(impl_MotifScan.ScanFastaForMotifs,
+                             name='MotifScan.ScanFastaForMotifs',
+                             types=[dict])
+        self.method_authentication['MotifScan.ScanFastaForMotifs'] = 'required'  # noqa
         self.rpc_service.add(impl_MotifScan.status,
                              name='MotifScan.status',
                              types=[dict])

@@ -7,7 +7,9 @@ MAINTAINER KBase Developer
 # installation scripts.
 
 # RUN apt-get update
-
+RUN mkdir -p /kb/deps
+COPY ./deps /kb/deps
+RUN sh /kb/deps/kb_meme/install-meme.sh
 
 # -----------------------------------------
 
